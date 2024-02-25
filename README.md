@@ -4,7 +4,7 @@
 ## 📚 Overview
 
 This is a simple CRUD (Create, Read, Update, Delete) application built with Vue.js, Tailwind CSS, the Composition API, and Pinia for state management. It allows you to manage your tasks seamlessly with an intuitive user interface.
-### [Live Demo](https://vue3-tailwind-todo.vercel.app/)
+### [Live Demo](https://vuejs-technical-assignment.vercel.app/#/)
 
 
 ## ✨ Features
