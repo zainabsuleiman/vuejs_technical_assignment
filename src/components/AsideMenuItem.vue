@@ -28,7 +28,7 @@ const componentClass = computed(() => [
   props.isDropdownList ? 'py-3 px-6 text-sm' : 'py-3',
   hasColor.value
     ? getButtonColor(props.item.color, false, true)
-    : `aside-menu-item dark:text-slate-900 dark:bg-slate-900/70`
+    : `aside-menu-item dark:text-slate-300 dark:bg-slate-900`
 ])
 
 const hasDropdown = computed(() => !!props.item.menu)

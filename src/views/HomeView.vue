@@ -12,7 +12,7 @@ import * as chartConfig from '@/components/Charts/chart.config.js'
 import SectionMain from '@/components/SectionMain.vue'
 
 import CardBoxTransaction from '@/components/CardBoxTransaction.vue'
-import CardBoxClient from '@/components/CardBoxClient.vue'
+
 import LayoutAuthenticated from '@/layouts/LayoutAuthenticated.vue'
 import SectionTitleLineWithButton from '@/components/SectionTitleLineWithButton.vue'
 
@@ -22,7 +22,7 @@ import TodoForm from '@/components/TodoForm.vue'
 import { useTodoStore } from '@/stores/todo'
 
 const modalActive = ref(null)
-const todoid = ref(null)
+const todoId = ref(null)
 
 const tasksStore = useTodoStore()
 
@@ -32,13 +32,13 @@ const rows = computed(() => tasksStore.getTodoList)
 console.log(rows);
 const toggleModal = () => {
   modalActive.value = !modalActive.value
-  if (!modalActive.value) {
-    todoid.value = null
-  }
+  // if (!modalActive.value) {
+  //   todoid.value = null
+  // }
 }
 
 const openEditModal = (id) => {
-  todoid.value = id
+  todoId.value = id
   toggleModal()
 }
 
@@ -64,7 +64,7 @@ onMounted(() => {
 
 const mainStore = useMainStore()
 // const todoforce = useTodoStore()
-const clientBarItems = computed(() => mainStore.clients.slice(0, 4))
+
 const list_of_todos = computed(() => mainStore.todos)
 // const todo = computed(() => mainStore.addtodo())
 
@@ -101,28 +101,19 @@ console.log(list_of_todos.value);
         <div class="flex flex-col justify-between" >
           <CardBoxTransaction
             v-for="(transaction, index) in list_of_todos"
-            :v-if="transaction.completed"
             :key="index"
             :amount="transaction.userId"
             :date="transaction.date"
             :business="transaction.business"
-            :type="transaction.type"
+            :type="transaction.completed"
             :name="transaction.todo"
             :account="transaction.account"
             @edit="openEditModal(transaction.id)"
             @delete="deleteTodo(transaction.id)"
           />
         </div>
-        <div class="flex flex-col justify-between">
-          <CardBoxClient
-            v-for="client in clientBarItems"
-            :key="client.id"
-            :name="client.name"
-            :login="client.login"
-            :date="client.created"
-            :progress="client.progress"
-          />
-        </div>
+
+       
       </div>
 
       
@@ -136,7 +127,7 @@ console.log(list_of_todos.value);
      
 
       <BaseModel :modalActive="modalActive" @close-modal="toggleModal">
-      <TodoForm @close-modal="toggleModal" v-model:todoId="todoid" />
+      <TodoForm @close-modal="toggleModal" v-model:todoId="todoId" />
     </BaseModel>
     </SectionMain>
   </LayoutAuthenticated>

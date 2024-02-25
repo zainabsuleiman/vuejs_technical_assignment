@@ -2,20 +2,20 @@
   <form @submit.prevent="performAction">
     <div class="mb-4 grid gap-4 sm:grid-cols-2">
       <TodoInput
-        label="Name"
-        id="name"
-        v-model="todo.todo"
+      v-model="todo.todo"
+        label="todo"
+        
         placeholder=" task name"
         required
       />
       <TodoTextBox
-      label="Completed"
       v-model="todo.completed"
+      label="completed"
+      
       />
       <TodoNumberInput
-        label="UserId"
-
-        v-model="todo.userId"
+      v-model="todo.userId"
+        label="userId"
         required
       />
     </div>
@@ -47,7 +47,7 @@ const tasksStore = useTodoStore()
 const todo = ref({
   todo: '',
   completed: false,
-  userId: 0
+  userId: ''
 })
 
 
@@ -69,11 +69,12 @@ console.log(todos.completed);
   tasksStore.createTodo(todos)
   resetTodo()
   emit('close-modal')
-  alert.success_center('task added successfully');
+  alert.success_center(`task ${todos.todo} added successfully`);
 }
 
 const updateTask = () => {
-  tasksStore.updateTodo( ...todo.value ,props.todoId )
+  tasksStore.updateTodo(todo.value.completed ,props.todoId )
+  alert.success_center(`task ${todo.value.todo} updated successfully`);
   resetTodo()
   emit('close-modal')
 }

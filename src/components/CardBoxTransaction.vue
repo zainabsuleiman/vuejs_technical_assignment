@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue'
-import { mdiCashMinus, mdiCashPlus, mdiReceipt, mdiCreditCardOutline } from '@mdi/js'
+import { mdiCheck, mdiClose, mdiCreditCardOutline } from '@mdi/js'
 import CardBox from '@/components/CardBox.vue'
 import BaseLevel from '@/components/BaseLevel.vue'
 import PillTag from '@/components/PillTag.vue'
@@ -8,10 +8,6 @@ import IconRounded from '@/components/IconRounded.vue'
 import EditMenu from '@/components/DropdownEditMenu.vue'
 const emit = defineEmits(['edit', 'delete'])
 const props = defineProps({
-  id: {
-    type: Number,
-    required: true
-  },
   amount: {
     type: Number,
     required: true
@@ -25,7 +21,7 @@ const props = defineProps({
     required: true
   },
   type: {
-    type: String,
+    type: Boolean,
     required: true
   },
   name: {
@@ -35,27 +31,39 @@ const props = defineProps({
   account: {
     type: String,
     required: true
+  },
+  completed: {
+    type: String,
+    required: true,
+    default:'completed'
+  },
+  inProgress: {
+    type: String,
+    required: true,
+    default:'inProgress'
+  },
+  typeName: {
+    type: String,
+    required: true,
+    
   }
  
 })
 
 const icon = computed(() => {
-  if (props.type === 'withdrawal') {
+  if (props.type === true) {
     return {
-      icon: mdiCashMinus,
-      type: 'danger'
+      icon: mdiCheck,
+      type: 'success',
+      typeName:'completed'
     }
-  } else if (props.type === 'deposit') {
+  } else if (props.type === false) {
     return {
-      icon: mdiCashPlus,
-      type: 'success'
+      icon: mdiClose,
+      type: 'danger',
+      typeName:'inProgress'
     }
-  } else if (props.type === 'invoice') {
-    return {
-      icon: mdiReceipt,
-      type: 'warning'
-    }
-  }
+  } 
 
   return {
     icon: mdiCreditCardOutline,
@@ -100,7 +108,7 @@ const deleteTodo = (id) => {
           {{ name }}
         </p>
         <div>
-          <PillTag :color="icon.type" :label="type" small />
+          <PillTag :color="icon.type" :label="typeName" small />
         </div>
         
       </div>

@@ -1,14 +1,13 @@
 <template>
   <div class="sm:col-span-2">
     <label
-      :for="id"
+      for="completed"
       class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
-      >{{label}}</label
+      >completed</label
     >
     <input
-      :id="id"
+      id="completed"
       type="checkbox"
-      :name="name"
       :value="modelValue"
       :checked="false ?? true"
       @input="updateModelValue"
@@ -20,10 +19,8 @@
 <script setup>
 defineProps({
   modelValue:{type:Boolean,default:true},
-  id: String,
-    label: String,
-    name: String,
-    value: Boolean,
+  
+   
    
   
 })

@@ -30,25 +30,23 @@ export const useTodoStore = defineStore('todo', {
   
 })
 .then(
- 
-  alert.success_center('task added successfuly'));
-      // this.todos.push({
-      //   id: Date.now(),
-      //   ...todo,
-      //   createdDate: new Date().toLocaleString(),
-      //   lastModifiedDate: new Date().toLocaleString()
-      // })
-      // localStorage.setItem('todos', JSON.stringify(this.todos))
+ console.log
+  
+)
     },
     updateTodo(updatedTodo,id) {
+      console.log(updatedTodo)
       fetch(`https://dummyjson.com/todos/${id}`, {
   method: 'PUT', /* or PATCH */
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
-    completed: updatedTodo.completed,
+    completed: updatedTodo,
   })
 })
-.then(res => res.json())
+.then(res =>{ res.json()
+
+  
+})
 .then(console.log);
             
     },
@@ -56,7 +54,9 @@ export const useTodoStore = defineStore('todo', {
       fetch(`https://dummyjson.com/todos/${id}`, {
   method: 'DELETE',
 })
-.then(res => res.json())
+.then(res => {res.json()
+alert.success_center('task deleted successfuly')
+})
 .then(console.log);
     },
     getTodoById(id) {
