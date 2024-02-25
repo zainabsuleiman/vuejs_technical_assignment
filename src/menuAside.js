@@ -9,11 +9,11 @@ export default [
     icon: mdiMonitor,
     label: 'Dashboard'
   },
-  {
-    to: '/profile',
-    label: 'Profile',
-    icon: mdiAccountCircle
-  },
+  // {
+  //   to: '/profile',
+  //   label: 'Profile',
+  //   icon: mdiAccountCircle
+  // },
   
   
   
