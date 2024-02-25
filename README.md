@@ -16,8 +16,8 @@ This is a simple CRUD (Create, Read, Update, Delete) application built with Vue.
 
 ## 🛠️ Installation
 
-1. 📂 Clone the repository: `git clone https://github.com/kirangurung2023/vue3-talwind-todo.git`
-2. 🚀 Navigate into the directory: `cd vue3-tailwind-todo`
+1. 📂 Clone the repository: `git clone https://github.com/zainabsuleiman/vuejs_technical_assignment.git`
+2. 🚀 Navigate into the directory: `cd vuejs_technical_assignment`
 3. 📦 Install the dependencies: `npm install`
 4. 🎉 Start the server: `npm run dev`
 
