@@ -40,15 +40,17 @@ export const useTodoStore = defineStore('todo', {
       // })
       // localStorage.setItem('todos', JSON.stringify(this.todos))
     },
-    updateTodo(updatedTodo) {
-      const index = this.todos.findIndex((todo) => todo.id === updatedTodo.id)
-      if (index !== -1) {
-        this.todos[index] = {
-          ...updatedTodo,
-          lastModifiedDate: new Date().toLocaleString()
-        }
-        localStorage.setItem('todos', JSON.stringify(this.todos))
-      }
+    updateTodo(updatedTodo,id) {
+      fetch(`https://dummyjson.com/todos/${id}`, {
+  method: 'PUT', /* or PATCH */
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    completed: updatedTodo.completed,
+  })
+})
+.then(res => res.json())
+.then(console.log);
+            
     },
     deleteTodo(id) {
       fetch(`https://dummyjson.com/todos/${id}`, {

@@ -73,7 +73,7 @@ console.log(todos.completed);
 }
 
 const updateTask = () => {
-  tasksStore.updateTodo({ ...todo.value })
+  tasksStore.updateTodo( ...todo.value ,props.todoId )
   resetTodo()
   emit('close-modal')
 }
