@@ -39,7 +39,7 @@ export const useMainStore = defineStore('main', () => {
       })
   }
   function fetchTodos() {
-    fetch(`https://dummyjson.com/todos?limit=13&skip=145`)
+    fetch(`https://dummyjson.com/todos?limit=13`)
     .then(res => res.json())
     .then(res => {
         this.todos=res.todos;
